@@ -2,37 +2,46 @@
 #include <stdlib.h>
 #include <time.h>
 
-int bubble_sort(int arr[]){
+void printArray(int arr[], int length){
+	
+	int i;
+
+	for (i = 0 ; i < length ; i++){
+		printf("%d, ", arr[i]);
+	}
+}
+
+int bubble_sort(int arr[], int length){
 	
 	return 0;
 }
 
 
-int quick_sort(int arr[]){
+int quick_sort(int arr[], int length){
 
 	return 0;
 }
 
 
-int merge_sort(int arr[]){
+int merge_sort(int arr[], int length){
 
 	return 0;
 }
 
 
-int insertion_sort(int arr[]){
+int insertion_sort(int arr[], int length){
 
 	return 0;
 }
 
 
-int heap_sort(int arr[]){
+int heap_sort(int arr[], int length){
 
 	return 0;
 }
 
 
-int bogo_sort(int arr[]){
+int bogo_sort(int arr[], int length){
 
 	return 0;
 }
@@ -55,16 +64,12 @@ void shuffle(int arr[], int n){
 
 int main(){
 
-	int i;
-	int length = 10;
 	int arr[] = {1,2,3,4,5,6,7,8,9,10};
+	int length = sizeof(arr) / sizeof(int);
 
 	shuffle(arr, length);
 
-	for (i = 0 ; i < length ; i++){
-		printf("%d, ", arr[i]);
-	}
-
+	printArray(arr, length);
 	printf("\n");
 
 	return 0;

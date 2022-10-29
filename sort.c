@@ -40,9 +40,18 @@ int merge_sort(int arr[], int length){
 }
 
 
-int insertion_sort(int arr[], int length){
+void insertion_sort(int arr[], int length){
+	int i, key, j;
+	for (i = 1; i < length; i++){
+		key = arr[i];
+		j = i - 1;
 
-	return 0;
+		while (j >= 0 && arr[j] > key){
+			arr[j+1] = arr[j];
+			j = j - 1;
+		}
+		arr[j+1] = key;
+	}
 }
 
 
@@ -80,7 +89,7 @@ int main(){
 
 	printArray(arr, length);
 	printf("\n");
-	bubble_sort(arr, length);
+	insertion_sort(arr, length);
 	printArray(arr, length);
 	printf("\n");
 

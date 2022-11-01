@@ -10,7 +10,7 @@ void printArray(int arr[], int length){
 	}
 }
 
-void swap(int* xp, int* yp){
+void swap(int* xp, int* yp){ // x pointer , y pointer
 	int temp = *xp;
 	*xp = *yp;
 	*yp = temp;
@@ -62,6 +62,20 @@ void merge(int arr[], int l, int m, int r){
 	}
 }
 
+int partition(int arr[], int low, int high){
+	int pivot = arr[high];
+	int i = low - 1;
+
+	for (int j = low; j <= high - 1; j++){
+		if (arr[j] < pivot){
+			i++;
+			swap(&arr[i], &arr[j]);
+		}
+	}
+	swap(&arr[i+1], &arr[high]);
+	return (i + 1);
+}
+
 // l = left index (0) , r = right index (length - 1) of subarray to be sorted
 
 void merge_sort(int arr[], int l, int r){
@@ -84,9 +98,13 @@ void bubble_sort(int arr[], int length){
 	}
 }
 
-int quick_sort(int arr[], int length){
+void quick_sort(int arr[], int low, int high){
+	if (low < high){
+		int pi = partition(arr, low, high);
 
-	return 0;
+		quick_sort(arr, low, pi - 1);
+		quick_sort(arr, pi + 1, high);
+	}
 }
 
 void insertion_sort(int arr[], int length){
@@ -136,7 +154,7 @@ int main(){
 
 	printArray(arr, length);
 	printf("\n");
-	merge_sort(arr, 0, length - 1);
+	quick_sort(arr, 0, length - 1);
 	printArray(arr, length);
 	printf("\n");
 

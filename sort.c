@@ -76,6 +76,16 @@ int partition(int arr[], int low, int high){
 	return (i + 1);
 }
 
+int is_sorted(int arr[], int length){
+	int i;
+	for (i = 0 ; i < length - 2; i++){
+		if (arr[i] > arr[i + 1]){ // current index > next index = not sorted
+			return 0;
+		}
+	}
+	return 1; // if it is sorted
+}
+
 // l = left index (0) , r = right index (length - 1) of subarray to be sorted
 
 void merge_sort(int arr[], int l, int r){
@@ -156,6 +166,11 @@ int main(){
 	printf("\n");
 	quick_sort(arr, 0, length - 1);
 	printArray(arr, length);
+
+	if (is_sorted(arr, length)){
+		printf("\nArray is sorted!");
+	}
+
 	printf("\n");
 
 	return 0;

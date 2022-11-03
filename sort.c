@@ -10,6 +10,19 @@ void printArray(int arr[], int length){
 	}
 }
 
+void shuffle(int arr[], int n){
+	srand(time(NULL));
+	if (n > 1){
+		int i;
+		for (i = 0; i < n - 1 ; i++){
+			int j = i + rand() / (RAND_MAX / (n - i) + 1);
+			int t = arr[j];
+			arr[j] = arr[i];
+			arr[i] = t;
+		}
+	}
+}
+
 void swap(int* xp, int* yp){ // x pointer , y pointer
 	int temp = *xp;
 	*xp = *yp;
@@ -138,21 +151,11 @@ int heap_sort(int arr[], int length){
 }
 
 
-int bogo_sort(int arr[], int length){
-
-	return 0;
-}
-
-void shuffle(int arr[], int n){
-	srand(time(NULL));
-	if (n > 1){
-		int i;
-		for (i = 0; i < n - 1 ; i++){
-			int j = i + rand() / (RAND_MAX / (n - i) + 1);
-			int t = arr[j];
-			arr[j] = arr[i];
-			arr[i] = t;
-		}
+void bogo_sort(int arr[], int length){
+	while (! is_sorted(arr, length)){
+		shuffle(arr, length);
+		printArray(arr, length);
+		printf("\n");
 	}
 }
 
@@ -164,7 +167,7 @@ int main(){
 
 	printArray(arr, length);
 	printf("\n");
-	quick_sort(arr, 0, length - 1);
+	bogo_sort(arr, length);
 	printArray(arr, length);
 
 	if (is_sorted(arr, length)){

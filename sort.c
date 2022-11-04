@@ -8,6 +8,7 @@ void printArray(int arr[], int length){
 	for (i = 0 ; i < length ; i++){
 		printf("%d, ", arr[i]);
 	}
+	printf("\n");
 }
 
 void shuffle(int arr[], int n){
@@ -121,6 +122,8 @@ void bubble_sort(int arr[], int length){
 	}
 }
 
+// low = 0 , high = length - 1
+
 void quick_sort(int arr[], int low, int high){
 	if (low < high){
 		int pi = partition(arr, low, high);
@@ -166,15 +169,21 @@ int main(){
 	shuffle(arr, length);
 
 	printArray(arr, length);
-	printf("\n");
-	bogo_sort(arr, length);
+
+	bubble_sort(arr, length); // bubble sort
 	printArray(arr, length);
 
-	if (is_sorted(arr, length)){
-		printf("\nArray is sorted!");
-	}
+	merge_sort(arr, 0, length - 1); // merge sort
+	printArray(arr, length);
 
-	printf("\n");
+	insertion_sort(arr, length); // insertion sort
+	printArray(arr, length);
+	
+	quick_sort(arr, 0, length - 1); // quick sort
+	printArray(arr, length);
+	
+	bogo_sort(arr, length); // bogo sort
+	printArray(arr, length);
 
 	return 0;
 }
